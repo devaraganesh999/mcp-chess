@@ -25,17 +25,20 @@ def get_player_profile(username):
     Raises:
         HTTPError: If the API request fails (e.g., user not found, network issue)
     """
-    # Construct API endpoint URL for player profile
-    url = f"{CHESS_API_BASE}/player/{username}"
-    
-    # Send GET request to the API
-    response = requests.get(url, headers=headers)
-    
-    # Raise an exception for HTTP errors (4xx, 5xx)
-    response.raise_for_status()
-    
-    # Parse and return JSON response as Python dictionary
-    return response.json()
+    try:
+        # Construct API endpoint URL for player profile
+        url = f"{CHESS_API_BASE}/player/{username}"
+        
+        # Send GET request to the API
+        response = requests.get(url, headers=headers)
+        
+        # Raise an exception for HTTP errors (4xx, 5xx)
+        response.raise_for_status()
+        
+        # Parse and return JSON response as Python dictionary
+        return response.json()
+    except Exception as e:
+        return {"error": str(e)}
 
 
 def get_player_stats(username):
@@ -52,14 +55,17 @@ def get_player_stats(username):
     Raises:
         HTTPError: If the API request fails
     """
-    # Construct API endpoint URL for player statistics
-    url = f"{CHESS_API_BASE}/player/{username}/stats"
-    
-    # Send GET request to the API
-    response = requests.get(url, headers=headers)
-    
-    # Raise an exception for HTTP errors
-    response.raise_for_status()
-    
-    # Parse and return JSON response
-    return response.json()
+    try:
+        # Construct API endpoint URL for player statistics
+        url = f"{CHESS_API_BASE}/player/{username}/stats"
+        
+        # Send GET request to the API
+        response = requests.get(url, headers=headers)
+        
+        # Raise an exception for HTTP errors
+        response.raise_for_status()
+        
+        # Parse and return JSON response
+        return response.json()
+    except Exception as e:
+        return {"error": str(e)}
