@@ -3,7 +3,7 @@
 from mcp.server.fastmcp import FastMCP
 
 # Initialize MCP server instance with a name (used for identification/logging)
-mcp = FastMCP('Chess.com')
+mcp = FastMCP('Chess')
 
 # Import helper functions that interact with Chess.com public API
 # (These functions handle actual HTTP requests and data retrieval)
